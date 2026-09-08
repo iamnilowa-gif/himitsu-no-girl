@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <iframe
-      src="/himitsu/index.html"
+      src="himitsu/index.html"
       title="Himitsu no Girl"
       data-testid="app-frame"
       style={{
