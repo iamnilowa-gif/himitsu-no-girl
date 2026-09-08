@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Himitsu no Girl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Special+Elite&family=VT323&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-testid="app-body">
+
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="sparkles" aria-hidden="true">
+    <span class="sparkle s1">✦</span>
+    <span class="sparkle s2">✧</span>
+    <span class="sparkle s3">✦</span>
+    <span class="sparkle s4">✧</span>
+    <span class="sparkle s5">✦</span>
+  </div>
+
+  <!-- ============ HEADER GLOBAL (fixe, hors boîte centrale) ============ -->
+  <header class="global-header" data-testid="global-header">
+    <h1 class="site-title" data-testid="site-title">Himitsu no Girl</h1>
+    <p class="site-subtitle" data-testid="site-subtitle">~ le journal secret d'une âme multifacette ~</p>
+
+    <nav class="pill-nav" data-testid="main-nav" aria-label="Navigation principale">
+      <button class="pill-btn active" data-testid="nav-welcome" data-route="welcome">Welcome!</button>
+      <button class="pill-btn" data-testid="nav-mp3" data-route="mp3">MP3</button>
+      <button class="pill-btn" data-testid="nav-daily-hifdh" data-route="daily-hifdh">Daily Hifdh</button>
+      <button class="pill-btn" data-testid="nav-hifdh-planner" data-route="hifdh-planner">Hifdh Planner</button>
+    </nav>
+
+    <div class="charm-grid" data-testid="charm-grid" aria-label="Raccourcis">
+      <button class="charm" data-testid="charm-loft" data-route="loft" title="Loft">
+        <span class="charm-icon" aria-hidden="true">⌂</span>
+        <span class="charm-name">Loft</span>
+      </button>
+      <button class="charm" data-testid="charm-ville" data-route="ville" title="Ville">
+        <span class="charm-icon" aria-hidden="true">☾</span>
+        <span class="charm-name">Ville</span>
+      </button>
+      <button class="charm" data-testid="charm-diary" data-route="diary" title="Diary">
+        <span class="charm-icon" aria-hidden="true">✎</span>
+        <span class="charm-name">Diary</span>
+      </button>
+      <button class="charm charm-pink" data-testid="charm-media-player" data-route="media-player" title="Media Player">
+        <span class="charm-icon" aria-hidden="true">♪</span>
+        <span class="charm-name">Media Player</span>
+      </button>
+      <button class="charm" data-testid="charm-games" data-route="games" title="Games">
+        <span class="charm-icon" aria-hidden="true">♟</span>
+        <span class="charm-name">Games</span>
+      </button>
+      <button class="charm" data-testid="charm-projects" data-route="projects" title="Projects Ideas">
+        <span class="charm-icon" aria-hidden="true">✧</span>
+        <span class="charm-name">Projects Ideas</span>
+      </button>
+      <button class="charm" data-testid="charm-manga" data-route="manga" title="Lecture Japonaise">
+        <span class="charm-icon" aria-hidden="true">本</span>
+        <span class="charm-name">Manga</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ CORPS UNIFIÉ : tronc flottant + widgets autour ============ -->
+  <div class="page-body">
+
+    <!-- Widgets flottants : gauche -->
+    <aside class="side-widgets side-left" data-testid="left-column">
+      <div class="widget widget-empty" data-testid="widget-profile">
+        <div class="widget-avatar" aria-hidden="true">♡</div>
+        <p class="widget-label">profil</p>
+        <p class="widget-hint">widget à venir</p>
+      </div>
+      <div class="widget widget-empty" data-testid="widget-misc-left">
+        <p class="widget-label">✧ notes ✧</p>
+        <p class="widget-hint">espace réservé</p>
+      </div>
+
+      <div class="widget diary-cal" id="diary-calendar" data-testid="diary-calendar"></div>
+    </aside>
+
+    <!-- Tronc central -->
+    <main class="trunk" data-testid="center-column">
+
+      <!-- ============ VUES DU ROUTEUR ============ -->
+      <div class="view-stack">
+
+        <section class="view active" id="view-welcome" data-testid="view-welcome">
+          <article class="paper-card">
+            <h2 class="card-title">Dear Diary,</h2>
+            <p class="card-meta">bienvenue · home · 秘密のガール</p>
+            <p class="card-text">
+              Bienvenue dans mon petit coin secret ♡ Ce blog est mon refuge pastel :
+              journal, mémorisation, musique et projets, tout réuni au même endroit.
+            </p>
+            <p class="card-text">
+              Utilise les boutons ci-dessus ou les petites breloques pour voyager
+              entre les sections. Chaque page arrivera doucement, une par une...
+            </p>
+            <p class="card-sign">— Himitsu no Girl ✦</p>
+          </article>
+        </section>
+
+        <section class="view" id="view-mp3" data-testid="view-mp3">
+          <div class="mp3-view">
+
+            <div class="mp3-head">
+              <h2 class="card-title">MP3 ♪</h2>
+              <p class="card-meta">anciennement VHS · playlist du mushaf · 604 pages · 30 juz'</p>
+            </div>
+
+            <div class="juz-strip" id="juz-strip" data-testid="juz-strip" aria-label="Choisir un Juz'"></div>
+
+            <div class="mp3-layout">
+              <div class="mp3-main">
+                <div class="album-head paper-card">
+                  <button class="album-jacket" id="album-jacket" data-testid="album-jacket" title="Pochette — modifiable dans le panneau en bas"></button>
+                  <div class="album-info">
+                    <p class="album-kicker">playlist</p>
+                    <h3 class="album-title" id="album-title" data-testid="album-title">Juz' 01</h3>
+                    <p class="album-meta" id="album-meta" data-testid="album-meta"></p>
+                    <div class="version-toggle">
+                      <button class="vbtn active" id="vbtn-coran" data-testid="version-coran">Coran</button>
+                      <button class="vbtn" id="vbtn-tajwid" data-testid="version-tajwid">Tajwid</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="track-wrap paper-card">
+                  <table class="track-table">
+                    <thead>
+                      <tr>
+                        <th class="col-num">#</th>
+                        <th>Title</th>
+                        <th class="col-ver">Version</th>
+                        <th class="col-play"></th>
+                      </tr>
+                    </thead>
+                    <tbody id="track-list" data-testid="track-list"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="mp3-admin paper-card" data-testid="mp3-admin">
+              <h3 class="admin-title">✦ panneau d'administration ✦</h3>
+              <p class="admin-note">
+                Les liens de partage Google Drive sont convertis automatiquement en streaming direct.
+                Un lien de test est pré-rempli (page 1 · Coran) pour essayer le lecteur.
+              </p>
+
+              <div class="admin-grid">
+                <div class="admin-card">
+                  <h4>pochette d'album</h4>
+                  <label class="admin-field">Juz'
+                    <select id="cover-juz" data-testid="cover-juz"></select>
+                  </label>
+                  <input type="url" id="cover-url" data-testid="cover-url" placeholder="https://... (image de couverture)" />
+                  <div class="admin-actions">
+                    <button class="pill-mini" id="cover-save" data-testid="cover-save">appliquer</button>
+                    <button class="pill-mini ghost" id="cover-reset" data-testid="cover-reset">retirer</button>
+                  </div>
+                </div>
+
+                <div class="admin-card">
+                  <h4>lien mp3 d'une page</h4>
+                  <label class="admin-field">version
+                    <select id="link-version" data-testid="link-version">
+                      <option value="coran">Coran</option>
+                      <option value="tajwid">Tajwid</option>
+                    </select>
+                  </label>
+                  <label class="admin-field">page (1–604)
+                    <input type="number" id="link-page" data-testid="link-page" min="1" max="604" value="1" />
+                  </label>
+                  <input type="url" id="link-url" data-testid="link-url" placeholder="https://... ou lien Google Drive" />
+                  <div class="admin-actions">
+                    <button class="pill-mini" id="link-save" data-testid="link-save">enregistrer</button>
+                    <button class="pill-mini ghost" id="link-clear" data-testid="link-clear">effacer</button>
+                  </div>
+                </div>
+
+                <div class="admin-card">
+                  <h4>remplissage en masse (modèle)</h4>
+                  <label class="admin-field">Juz'
+                    <select id="bulk-juz" data-testid="bulk-juz"></select>
+                  </label>
+                  <label class="admin-field">version
+                    <select id="bulk-version" data-testid="bulk-version">
+                      <option value="coran">Coran</option>
+                      <option value="tajwid">Tajwid</option>
+                    </select>
+                  </label>
+                  <input type="url" id="bulk-template" data-testid="bulk-template" placeholder="https://.../page-{n}.mp3" />
+                  <p class="admin-hint">{n} sera remplacé par le numéro de chaque page du Juz'</p>
+                  <div class="admin-actions">
+                    <button class="pill-mini" id="bulk-save" data-testid="bulk-save">appliquer au Juz'</button>
+                  </div>
+                </div>
+
+                <div class="admin-card">
+                  <h4>données</h4>
+                  <p class="admin-hint" id="links-count" data-testid="links-count"></p>
+                  <p class="admin-hint" id="covers-count" data-testid="covers-count"></p>
+                  <div class="admin-actions">
+                    <button class="pill-mini ghost" id="data-reset" data-testid="data-reset">tout réinitialiser</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="view" id="view-daily-hifdh" data-testid="view-daily-hifdh">
+          <div class="hifdh-view">
+
+            <div class="mp3-head">
+              <h2 class="card-title">Daily Hifdh</h2>
+              <p class="card-meta">anciennement fashion101 · session annotée au stylet</p>
+            </div>
+
+            <div class="cover-stage">
+              <button class="btn-start" id="btn-start-session" data-testid="start-session">Commencer la session d'aujourd'hui</button>
+              <div class="cover-frame" id="cover-frame" data-testid="cover-frame">
+                <img class="cover-img" id="cover-img" src="cover-campus.png" alt="couverture de session" />
+                <div class="cover-cloud">
+                  <img src="download.png" class="cloud-img" alt="" draggable="false" />
+                  <span class="cloud-title" id="cover-title" data-testid="cover-title">nouvelle session</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hifdh-archive" id="hifdh-archive" data-testid="hifdh-archive"></div>
+
+            <div class="cover-lib">
+              <p class="lib-title">✧ bibliothèque de couvertures ✧</p>
+              <div class="lib-thumbs" id="cover-thumbs" data-testid="cover-thumbs"></div>
+              <label class="pill-mini upload-btn" data-testid="cover-upload-label">
+                ajouter des couvertures
+                <input type="file" id="cover-upload" data-testid="cover-upload" accept="image/*" multiple hidden />
+              </label>
+              <p class="admin-hint">une couverture est choisie au hasard à chaque nouvelle session</p>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="view" id="view-hifdh-planner" data-testid="view-hifdh-planner">
+          <article class="paper-card placeholder-card">
+            <h2 class="card-title">Hifdh Planner</h2>
+            <p class="card-meta">anciennement codes</p>
+            <p class="card-text">Section Hifdh Planner en cours de construction...</p>
+          </article>
+        </section>
+
+        <section class="view" id="view-loft" data-testid="view-loft">
+          <article class="paper-card placeholder-card">
+            <h2 class="card-title">Loft</h2>
+            <p class="card-text">Section Loft en cours de construction...</p>
+          </article>
+        </section>
+
+        <section class="view" id="view-ville" data-testid="view-ville">
+          <article class="paper-card placeholder-card">
+            <h2 class="card-title">Ville</h2>
+            <p class="card-text">Section Ville en cours de construction...</p>
+          </article>
+        </section>
+
+        <section class="view" id="view-diary" data-testid="view-diary">
+          <div class="diary-view">
+
+            <div class="y2k-ticker-button" id="dailyTickerBtn" data-testid="daily-ticker">
+              <div class="ticker-content" id="tickerText">Tell your dear diary...</div>
+            </div>
+
+            <div id="diary-list" data-testid="diary-list"></div>
+
+            <button class="pill-mini diary-new" id="diary-new-btn" data-testid="diary-new-btn">✎ nouvelle entrée</button>
+
+            <div class="diary-editor" id="diary-editor" data-testid="diary-editor" hidden>
+              <p class="lib-title">✧ nouvelle entrée ✧</p>
+              <textarea id="diary-new-body" data-testid="diary-new-body" rows="6" placeholder="Dear Diary, aujourd'hui..."></textarea>
+              <input id="diary-new-labels" data-testid="diary-new-labels" placeholder="labels (séparés par des virgules)" value="dearest diary" autocomplete="off" />
+              <div class="admin-actions">
+                <label class="pill-mini upload-btn" data-testid="diary-img-label">ajouter un polaroid
+                  <input type="file" id="diary-new-img" data-testid="diary-new-img" accept="image/*" hidden />
+                </label>
+                <span class="admin-hint" id="diary-img-name" data-testid="diary-img-name"></span>
+              </div>
+              <div class="admin-actions">
+                <button class="pill-mini" id="diary-save" data-testid="diary-save">publier</button>
+                <button class="pill-mini ghost" id="diary-cancel" data-testid="diary-cancel">annuler</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="view" id="view-media-player" data-testid="view-media-player">
+          <article class="paper-card placeholder-card">
+            <h2 class="card-title">Media Player</h2>
+            <p class="card-meta">♪ now playing</p>
+            <p class="card-text">Section Media Player en cours de construction...</p>
+          </article>
+        </section>
+
+        <section class="view" id="view-games" data-testid="view-games">
+          <div class="games-view">
+            <div class="mp3-head">
+              <h2 class="card-title">Games</h2>
+              <p class="card-meta">vita arcade · flash games archive</p>
+            </div>
+
+            <div class="games-stage">
+              <div class="psv-sidebar-widget" id="openVitaOverlay" data-testid="open-vita-overlay">
+                <p class="psv-widget-label">★ VITA ARCADE !</p>
+                <img src="psp-pink.png" alt="PS Vita" class="psv-full-img" />
+                <button class="psv-play-btn" data-testid="lets-play">let's play! ♡</button>
+              </div>
+              <button class="pill-mini" id="openAddGameModal" data-testid="open-add-game">＋ ajouter un jeu</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-projects" data-testid="view-projects">
+          <article class="paper-card placeholder-card">
+            <h2 class="card-title">Projects Ideas</h2>
+            <p class="card-text">Section Projects Ideas en cours de construction...</p>
+          </article>
+        </section>
+
+        <section class="view" id="view-manga" data-testid="view-manga">
+          <article class="paper-card placeholder-card">
+            <h2 class="card-title">Lecture Japonaise</h2>
+            <p class="card-meta">漫画 · manga</p>
+            <p class="card-text">Section Lecture Japonaise en cours de construction...</p>
+          </article>
+        </section>
+
+      </div>
+
+    </main>
+
+    <!-- Widgets flottants : droite (lecteur + liens) -->
+    <aside class="side-widgets side-right" data-testid="right-column">
+      <div class="widget mp3-player" data-testid="mp3-player">
+        <div class="ipod-scale">
+          <div class="ipod">
+            <div class="ipod-screen" data-testid="player-screen">
+              <p class="lcd-head">himitsu fm</p>
+              <div class="lcd-row lcd-title" id="player-track" data-testid="player-track">— choisis une page —</div>
+              <div class="lcd-row" id="player-sub" data-testid="player-sub">&nbsp;</div>
+              <div class="lcd-row lcd-ver" id="player-ver" data-testid="player-ver">&nbsp;</div>
+              <div class="lcd-bar" id="player-bar" data-testid="player-bar"><div class="lcd-fill" id="player-fill"></div></div>
+              <div class="lcd-times"><span id="time-cur" data-testid="time-cur">0:00</span><span id="time-total" data-testid="time-total">0:00</span></div>
+              <div class="lcd-hint" id="player-hint" data-testid="player-hint"></div>
+              <div class="lcd-loop" id="lcd-loop" data-testid="lcd-loop">↻ boucle</div>
+            </div>
+            <div class="ipod-wheel">
+              <button class="wheel-btn w-top" id="btn-loop" data-testid="player-loop" title="Lire la page en boucle">loop ↻</button>
+              <button class="wheel-btn w-left" id="btn-prev" data-testid="player-prev" title="Piste précédente">◂◂</button>
+              <button class="wheel-btn w-right" id="btn-next" data-testid="player-next" title="Piste suivante">▸▸</button>
+              <button class="wheel-btn w-bottom" id="btn-play" data-testid="player-play" title="Lecture / Pause">▶ ❚❚</button>
+              <button class="wheel-center" id="btn-center" data-testid="player-center" title="Lecture / Pause">♡</button>
+            </div>
+            <audio id="mp3-audio" preload="none"></audio>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget widget-empty" data-testid="widget-spotify">
+        <p class="widget-label">♪ spotify</p>
+        <p class="widget-hint">widget à venir</p>
+      </div>
+      <div class="widget widget-empty" data-testid="widget-misc-right">
+        <p class="widget-label">✧ liens ✧</p>
+        <p class="widget-hint">espace réservé</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="site-footer" data-testid="site-footer">
+    <p>✦ himitsu no girl ✦ fait avec ♡ ✦</p>
+  </footer>
+
+  <!-- ============ OVERLAY SESSION HIFDH ============ -->
+  <div class="hifdh-overlay" id="hifdh-overlay" data-testid="hifdh-overlay" hidden>
+    <button class="ov-close" id="ov-close" data-testid="overlay-close" title="Fermer">✕</button>
+    <div class="ov-scroll">
+
+      <div class="cover-frame ov-cover">
+        <img class="cover-img" id="ov-cover-img" src="cover-campus.png" alt="" />
+        <div class="cover-cloud">
+          <img src="download.png" class="cloud-img" alt="" draggable="false" />
+          <input class="cloud-input" id="session-title" data-testid="session-title" maxlength="60" placeholder="nom de la session..." autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="tablet" id="tablet">
+        <img src="image-19.png" class="tablet-img" alt="tablette" draggable="false" />
+        <canvas id="hifdh-canvas" data-testid="hifdh-canvas"></canvas>
+      </div>
+
+      <div class="toolbar" data-testid="toolbar">
+        <div class="tool-colors">
+          <button class="swatch active" data-testid="color-encre" data-color="#4a3540" style="background:#4a3540" title="encre"></button>
+          <button class="swatch" data-testid="color-rose" data-color="#c96b8c" style="background:#c96b8c" title="rose"></button>
+          <button class="swatch" data-testid="color-or" data-color="#c9a35a" style="background:#c9a35a" title="or"></button>
+          <button class="swatch" data-testid="color-bleu" data-color="#7a86b8" style="background:#7a86b8" title="bleu"></button>
+          <button class="swatch" data-testid="color-sauge" data-color="#7fa08a" style="background:#7fa08a" title="sauge"></button>
+        </div>
+        <div class="tool-sizes">
+          <button class="pill-mini size-btn" data-testid="size-fine" data-size="3">fin</button>
+          <button class="pill-mini size-btn active" data-testid="size-moyen" data-size="5">moyen</button>
+          <button class="pill-mini size-btn" data-testid="size-epais" data-size="9">épais</button>
+        </div>
+        <button class="pill-mini" id="tool-eraser" data-testid="tool-eraser">gomme</button>
+        <button class="pill-mini ghost" id="tool-undo" data-testid="tool-undo">↩ annuler</button>
+        <button class="pill-mini ghost" id="tool-redo" data-testid="tool-redo">↪ refaire</button>
+      </div>
+
+      <div class="hearts-row" id="hearts-row" data-testid="hearts-row"></div>
+      <p class="hearts-count" id="hearts-count" data-testid="hearts-count">0 / 10 récitations par cœur</p>
+
+      <button class="btn-finish" id="btn-finish" data-testid="finish-session" hidden>Terminer la session ♡</button>
+
+      <div class="comments" id="comments-area" data-testid="comments-area" hidden>
+        <p class="lib-title">✧ commentaires ✧</p>
+        <div id="comments-list" data-testid="comments-list"></div>
+        <div class="comment-form">
+          <input id="comment-input" data-testid="comment-input" placeholder="un mot sur cette session..." maxlength="200" autocomplete="off" />
+          <button class="pill-mini" id="comment-add" data-testid="comment-add">ajouter</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ OVERLAY PS VITA ============ -->
+  <div class="psv-overlay" id="vitaOverlay" data-testid="vita-overlay">
+    <div class="psv-console-container">
+      <img src="psp-pink.png" alt="PS Vita Body" class="psv-bg-console" id="vitaBodyImg" />
+
+      <div class="psv-screen" id="vitaScreen">
+        <div class="psv-view active" id="vitaHomeView" data-testid="vita-home-view">
+          <button class="vita-corner-btn vita-corner-right" id="closeVitaOverlay" data-testid="close-vita-overlay">✕</button>
+          <div class="vita-pages" id="vitaPages" data-testid="vita-pages"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL AJOUT DE JEU (hors console) ============ -->
+  <div class="vita-modal" id="vitaAddModal" data-testid="vita-add-modal" style="display:none;">
+    <div class="vita-modal-content">
+      <h4>Add a Flash Game</h4>
+      <input type="text" id="inputGameTitle" data-testid="input-game-title" placeholder="Game Title (ex: Bratz Makeover)" />
+      <input type="text" id="inputGameCover" data-testid="input-game-cover" placeholder="Thumbnail Image URL" />
+      <input type="text" id="inputGameUrl" data-testid="input-game-url" placeholder="Game Embed / Play URL" />
+      <div class="modal-buttons">
+        <button id="saveNewGameBtn" class="vita-save-btn" data-testid="save-new-game">Save Game <span style="color:#e2547f">♡</span></button>
+        <button id="cancelAddGameBtn" class="vita-cancel-btn" data-testid="cancel-add-game">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="mp3.js"></script>
+  <script src="hifdh.js"></script>
+  <script src="diary.js"></script>
+  <script src="games.js"></script>
+</body>
+</html>
