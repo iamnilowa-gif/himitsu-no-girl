@@ -1,5 +1,12 @@
 /* ============ HIMITSU NO GIRL — routeur léger ============ */
 
+// --- Initialisation de Supabase ---
+const SUPABASE_URL = https://nmdqjmopqermnemlnrcq.supabase.co/; // Remplace par ton URL
+const SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5tZHFqbW9wcWVybW5lbWxucmNxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwNTAwOTksImV4cCI6MjEwNDYyNjA5OX0.xz15S7CiPJMI2IdSTrYuT2VntLBjPTfwVlQOocnEbYc; // Remplace par ta clé publique
+
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 const ROUTES = [
   'welcome', 'mp3', 'daily-hifdh', 'hifdh-planner',
   'loft', 'ville', 'diary', 'media-player',
