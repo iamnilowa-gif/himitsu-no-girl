@@ -1,0 +1,15 @@
+{
+  "outputDirectory": "frontend/public/himitsu",
+  "builds": [
+    {
+      "src": "frontend/public/himitsu/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/public/himitsu/$1"
+    }
+  ]
+}
